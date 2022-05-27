@@ -3,6 +3,7 @@ const {
   getUser,
   updateUser,
   deleteUser,
+  sendMail
 } = require("../controllers/user");
 
 const User = {
@@ -47,6 +48,16 @@ const deleteUsersOpt = {
   },
   handler: deleteUser,
 };
+const sendMailOpt = {
+  schema: {
+    response: {
+      200:{
+        type: "string"
+      },
+    },
+  },
+  handler: sendMail,
+};
 
 function userRoutes(fastify, options, done) {
   //create user
@@ -60,6 +71,8 @@ function userRoutes(fastify, options, done) {
 
   //delete users
   fastify.delete("/users/:id", deleteUsersOpt);
+
+  fastify.post("/send", sendMailOpt);
 
   done();
 }

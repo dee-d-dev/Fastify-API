@@ -31,4 +31,10 @@ const deleteUser = async (req, reply) => {
   reply.send(`user with id ${id} has been deleted`);
 };
 
-module.exports = { createUser, getUser, updateUser, deleteUser };
+const sendMail = async (req, reply) => {
+  const { message } = req.body.message;
+  const { recipient } = req.body.recipient;
+  reply.send(`email sender`);
+};
+
+module.exports = { createUser, getUser, updateUser, deleteUser, sendMail };
