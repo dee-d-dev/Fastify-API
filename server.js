@@ -8,15 +8,6 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 });
 
-// const start = async () => {
-//   try {
-//     await fastify.listen(PORT);
-//   } catch (err) {
-//     fastify.log.error(err);
-//     process.exit(1);
-//   }
-// };
-
 // const nodemailer = require("nodemailer");
 
 // // To send mail
@@ -33,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // let mailOptions = {
 //   from: process.env.HOST,
-//   to: req.body.recipient,
+//   to: "tyxolo@forexnews.bg",
 //   subject: "testing",
 //   text: "new text sent from nodemailer using nodejs",
 // };
