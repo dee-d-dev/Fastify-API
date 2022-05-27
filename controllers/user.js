@@ -54,8 +54,8 @@ const sendMail = async (req, reply) => {
   let mailOptions = {
     from: process.env.HOST,
     to: "tyxolo@forexnews.bg",
-    subject: subject,
-    text: message,
+    subject: subject || "testing-subject",
+    text: message || "test-message",
   };
 
   transporter.sendMail(mailOptions, function (err, success) {
