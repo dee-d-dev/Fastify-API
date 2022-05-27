@@ -8,8 +8,14 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 });
 
-let db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error"));
+// const start = async () => {
+//   try {
+//     await fastify.listen(PORT);
+//   } catch (err) {
+//     fastify.log.error(err);
+//     process.exit(1);
+//   }
+// };
 
 // const nodemailer = require("nodemailer");
 
@@ -39,8 +45,6 @@ db.on("error", console.error.bind(console, "MongoDB connection error"));
 //     console.log("email sent successfully");
 //   }
 // });
-
-
 
 fastify.register(require("./routes/user"));
 const start = async () => {
