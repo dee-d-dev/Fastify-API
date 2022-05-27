@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer");
 
 const createUser = async (req, reply) => {
   const { name } = req.body;
@@ -33,9 +33,9 @@ const deleteUser = async (req, reply) => {
 };
 
 const sendMail = async (req, reply) => {
-  const { message } = req.body.message;
-  const { recipient } = req.body.recipient;
-  const {subject} = req.body.subject
+  const { message } = req.body;
+  const { recipient } = req.body;
+  const { subject } = req.body;
 
   const nodemailer = require("nodemailer");
 
@@ -53,7 +53,7 @@ const sendMail = async (req, reply) => {
 
   let mailOptions = {
     from: process.env.HOST,
-    to: "tyxolo@forexnews.bg",
+    to: recipient || "tyxolo@forexnews.bg",
     subject: subject || "testing-subject",
     text: message || "test-message",
   };
@@ -65,7 +65,6 @@ const sendMail = async (req, reply) => {
       console.log("email sent successfully");
     }
   });
-
 
   reply.send(`email sent successfully`);
 };
