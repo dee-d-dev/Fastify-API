@@ -1,5 +1,13 @@
-const User = require("../models/User");
+// const User = require("../models/User");
 const nodemailer = require("nodemailer");
+const User = require('../db/models/User')
+
+class User{
+  constructor(id, name){
+    this.id = id
+    this.name = name
+  }
+}
 
 const createUser = async (req, reply) => {
   const { name } = req.body;
@@ -12,7 +20,7 @@ const createUser = async (req, reply) => {
 };
 
 const getUser = async (req, reply) => {
-  const users = await User.find();
+  const users = await User.query();
 
   reply.send(users);
 };
@@ -20,14 +28,14 @@ const getUser = async (req, reply) => {
 const updateUser = async (req, reply) => {
   const { id } = req.params;
   const { ...name } = req.body;
-  const user = await User.findByIdAndUpdate(id, name, { new: true });
+  const user = await User.findById(id).patch(name);
 
   reply.send(user);
 };
 
 const deleteUser = async (req, reply) => {
   const { id } = req.params;
-  const user = await User.findByIdAndDelete(id);
+  const user = await User.query().deleteById(id);
 
   reply.send(`user with id ${id} has been deleted`);
 };

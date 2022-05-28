@@ -2,6 +2,9 @@ const fastify = require("fastify")({ logger: true });
 require("dotenv").config();
 const mongoose = require("mongoose");
 PORT = 8000;
+const dbSetup = require("./db/db-setup");
+
+dbSetup();
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,

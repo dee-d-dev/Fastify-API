@@ -6,6 +6,8 @@ const {
   sendMail
 } = require("../controllers/user");
 
+
+
 const User = {
   type: "object",
   properties: {
