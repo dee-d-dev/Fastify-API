@@ -2,12 +2,6 @@
 const nodemailer = require("nodemailer");
 const User = require('../db/models/User')
 
-class User{
-  constructor(id, name){
-    this.id = id
-    this.name = name
-  }
-}
 
 const createUser = async (req, reply) => {
   const { name } = req.body;
